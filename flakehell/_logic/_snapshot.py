@@ -17,7 +17,7 @@ THRESHOLD = 3600 * 24  # 1 day
 
 def prepare_cache(path=CACHE_PATH):
     if not path.exists():
-        path.mkdir(parents=True)
+        path.mkdir(parents=True, exist_ok=True)
         return
     for fpath in path.iterdir():
         if time() - fpath.stat().st_atime <= THRESHOLD:
